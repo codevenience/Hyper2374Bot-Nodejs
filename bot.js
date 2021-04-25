@@ -2,10 +2,11 @@
 require('dotenv').config();
 const fs = require('fs');
 const yaml = require('js-yaml')
-const VERSION = 'v0177.1';
+const VERSION = 'v0177.2';
 const tmi = require('tmi.js');
 const PREFIX = process.env['BOT_PREFIX'];
 var commands = Object();
+var timerArray = Array();
 
 // Define configuration options
 const opts = {
@@ -77,6 +78,31 @@ function processRandomCommand (data) {
   return result;
 }
 
+function processTimerCommand (data) {
+  /**
+   * Default command. Each alias also need.
+   * 
+   * <command>: {
+   *  "type": "timer",
+   *  "msg": <message content>,
+   *  "interval": <time>
+   * }
+   */
+   let name = data['name'];
+   let alias = data['alias'];
+   let message = data['text'];
+   let interval = Number(data['time']);
+
+   timerArray.push(
+    setInterval(() => {
+      opts['channels'].forEach((channel) => {
+        client.say(channel, message);
+      })
+    }, interval)
+   );
+
+}
+
 try {
   let fileContents = fs.readFileSync('./config/commands.yml', 'utf8');
   let data = yaml.load(fileContents);
@@ -88,6 +114,12 @@ try {
   data['random'].forEach((element) => {
     commands = Object.assign(commands, processRandomCommand(element));
   });
+
+  data['timer'].forEach((element) => {
+    commands = Object.assign(commands, processSingleCommand(element));
+    processTimerCommand(element);
+  });
+  console.log(commands);
 } catch (e) {
   console.log(e);
 }
