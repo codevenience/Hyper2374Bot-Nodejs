@@ -1,8 +1,8 @@
 // Load the environment variable
 require('dotenv').config();
 
+const VERSION = 'v0187.00';
 const tmi = require('tmi.js');
-
 
 // Define configuration options
 const opts = {
@@ -31,7 +31,7 @@ client.connect();
 // Called every time the bot connects to Twitch chat
 function onConnectedHandler (addr, port) {
     opts.channels.forEach((element) =>  {
-      client.say(element, `Hi! Hyper2374Bot is online.`);
+      client.say(element, `小烈專屬機器人上線囉！ (๑•̀ㅂ•́)و✧ (build: ${VERSION})`);
     });
     console.log(`* Connected to ${addr}:${port}`);
   }
@@ -48,6 +48,8 @@ function onMessageHandler (target, context, msg, self) {
     const num = rollDice();
     client.say(target, `You rolled a ${num}`);
     console.log(`* Executed ${commandName} command`);
+  } else if (commandName === '!version') {
+    client.say(target, `Current Bot version is ${VERSION}.`);
   } else {
     console.log(`* Unknown command ${commandName}`);
   }
