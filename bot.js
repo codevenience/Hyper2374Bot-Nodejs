@@ -1,8 +1,11 @@
 // Load the environment variable
 require('dotenv').config();
-
-const VERSION = 'v0187.00';
+const fs = require('fs');
+const yaml = require('js-yaml')
+const VERSION = 'v0177.1';
 const tmi = require('tmi.js');
+const PREFIX = process.env['BOT_PREFIX'];
+var commands = Object();
 
 // Define configuration options
 const opts = {
@@ -25,39 +28,109 @@ const client = new tmi.client(opts);
 client.on('connected', onConnectedHandler);
 client.on('message', onMessageHandler);
 
+function processSingleCommand (data) {
+  /**
+   * Default command. Each alias also need.
+   * 
+   * <command>: {
+   *  "type": "single",
+   *  "msg": <message content>
+   * }
+   */
+  let result = Object();
+  let name = data['name'];
+  let alias = data['alias'];
+  let message = data['text'];
+
+  alias.push(name);
+  alias.forEach((element) => {
+    result[PREFIX + element] = {
+      "type": "single",
+      "msg": message
+    }
+  })
+
+  return result;
+}
+
+function processRandomCommand (data) {
+  /**
+   * Default command. Each alias also need.
+   * <command>: {
+   *  "type": "random",
+   *  "msg": <options array>
+   * }
+   */
+  let result = Object();
+  let name = data['name'];
+  let alias = data['alias'];
+  let message = data['text'];
+
+  alias.push(name);
+  alias.forEach((element) => {
+    result[PREFIX + element] = {
+      "type": "random",
+      "msg": message
+    }
+  })
+
+  return result;
+}
+
+try {
+  let fileContents = fs.readFileSync('./config/commands.yml', 'utf8');
+  let data = yaml.load(fileContents);
+
+  data['single'].forEach((element) => {
+    commands = Object.assign(commands, processSingleCommand(element));
+  });
+
+  data['random'].forEach((element) => {
+    commands = Object.assign(commands, processRandomCommand(element));
+  });
+} catch (e) {
+  console.log(e);
+}
+
 // Connect to Twitch:
 client.connect();
 
 // Called every time the bot connects to Twitch chat
 function onConnectedHandler (addr, port) {
-    opts.channels.forEach((element) =>  {
-      client.say(element, `小烈專屬機器人上線囉！ (๑•̀ㅂ•́)و✧ (build: ${VERSION})`);
-    });
-    console.log(`* Connected to ${addr}:${port}`);
-  }
+  opts.channels.forEach((element) =>  {
+    client.say(element, `小烈專屬機器人上線囉！ (๑•̀ㅂ•́)و✧ (build: ${VERSION})`);
+  });
+  console.log(`* Connected to ${addr}:${port}`);
+}
 
 // Called every time a message comes in
 function onMessageHandler (target, context, msg, self) {
+  let user = context['display-name'];
   if (self) { return; } // Ignore messages from the bot
 
   // Remove whitespace from chat message
   const commandName = msg.trim();
+  if (commandName.charAt(0) != '!') { return; }
 
   // If the command is known, let's execute it
-  if (commandName === '!dice') {
-    const num = rollDice();
-    client.say(target, `You rolled a ${num}`);
-    console.log(`* Executed ${commandName} command`);
-  } else if (commandName === '!version') {
-    client.say(target, `Current Bot version is ${VERSION}.`);
+  if (commandName in commands) {
+    let type = commands[commandName]['type'];
+    if (type === 'single') {
+      singleCommandCallback (target, commands[commandName]['msg']);
+    } else if (type === 'random') {
+      randomCommandCallback (target, commands[commandName]['msg'], user);
+    }
   } else {
+    client.say(target, `機器人不知道這個指令(;\´༎ຶД༎ຶ\`)`);
     console.log(`* Unknown command ${commandName}`);
   }
 }
 
-// Function called when the "dice" command is issued
-function rollDice () {
-  const sides = 6;
-  return Math.floor(Math.random() * sides) + 1;
+function singleCommandCallback (target, msg) {
+  client.say(target, msg);
 }
 
+function randomCommandCallback (target, msg, user) {
+  let result = String(msg[Math.floor(Math.random() * msg.length)]);
+  client.say(target, `${user} 抽中了「 ${result}」Σ(｀д′*ノ)ノ`);
+}
