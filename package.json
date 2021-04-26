@@ -4,6 +4,9 @@
   "description": "Hyper2374Bot-Nodejs",
   "main": "bot.js",
   "type": "module",
+  "engines": {
+      "node": "14.x"
+  },
   "dependencies": {
     "dotenv": "^8.2.0",
     "js-yaml": "^4.1.0",
