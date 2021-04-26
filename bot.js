@@ -153,7 +153,7 @@ function onMessageHandler (target, context, msg, self) {
       randomCommandCallback (target, commands[commandName]['msg'], user);
     }
   } else {
-    client.say(target, `機器人不知道這個指令(;\´༎ຶД༎ຶ\`)`);
+    // client.say(target, `機器人不知道這個指令(;\´༎ຶД༎ຶ\`)`);
     console.log(`* Unknown command ${commandName}`);
   }
 }
