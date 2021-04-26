@@ -1,8 +1,9 @@
 {
   "name": "hyper2374bot-nodejs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hyper2374Bot-Nodejs",
   "main": "bot.js",
+  "type": "module",
   "dependencies": {
     "dotenv": "^8.2.0",
     "js-yaml": "^4.1.0",
@@ -22,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/Codevience/Hyper2374Bot-Nodejs/issues"
   },
-  "homepage": "https://github.com/Codevience/Hyper2374Bot-Nodejs#readme"
+  "homepage": "https://github.com/Codevience/Hyper2374Bot-Nodejs#readme",
+  "keywords": []
 }
