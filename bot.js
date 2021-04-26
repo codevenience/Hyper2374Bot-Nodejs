@@ -62,7 +62,7 @@ function onMessageHandler (target, context, msg, self) {
     // Free the handler
     command_handler = null;
   } else {
-    // CLIENT.say(target, `機器人不知道這個指令(;\´༎ຶД༎ຶ\`)`);
+    // client.say(target, `機器人不知道這個指令(;\´༎ຶД༎ຶ\`)`);
     console.log(`* Unknown command ${commandName}`);
   }
 }
