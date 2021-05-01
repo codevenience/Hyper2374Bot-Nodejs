@@ -66,6 +66,7 @@ function onMessageHandler (target, context, msg, self) {
                     second,
                     identify
                 )
+                CLIENT.say(target, `${userId} 加入勇者行列 增加了 ${second} 秒`);
             }
         } else {
             
@@ -122,6 +123,12 @@ function processDareGameCallback (target, DareGameObj) {
 }
 
 function CheckUserIdentify (ctx) {
-    let BadgesList = ctx['badges-raw'].split('/');
+    let BadgesList = [];
+    if (ctx['badges-raw'] == null) {
+        return BadgesList;
+    } else {
+        BadgesList = ctx['badges-raw'].split('/');
+    }
+    
     return BadgesList;
 }
