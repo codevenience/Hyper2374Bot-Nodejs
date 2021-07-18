@@ -23,15 +23,18 @@ export class TimerCommand {
             let name     = datum['name'];
             let alias    = datum['alias'];
             let message  = datum['text'];
+            let enable   = datum['enable'];
             let interval = Number(datum['time']);
 
-            timer_array.push(
-                setInterval(() => {
-                    this.OPTIONS['channels'].forEach((channel) => {
-                        this.CLIENT.say(channel, message);
-                    })
-                }, interval)
-            );
+            if (enable) {
+                timer_array.push(
+                    setInterval(() => {
+                        this.OPTIONS['channels'].forEach((channel) => {
+                            this.CLIENT.say(channel, message);
+                        })
+                    }, interval)
+                );
+            }
         });
 
         return timer_array;

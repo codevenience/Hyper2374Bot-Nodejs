@@ -34,6 +34,7 @@ timer:
     time : 1200000
     text : "POWZAN官網: https://www.powzan.com/?utm_source=twitch&utm_medium=Live&utm_campaign=hyper2374 CR-GC603: https://www.powzan.com/web/product/product_in.jsp?pd_no=PD1595582459088&utm_source=twitch&utm_medium=Live&utm_campaign=hyper2374"
     lines : 5
+    enable: false
     level: general
 
 random:

@@ -10,7 +10,7 @@ import { DareGame } from './commands/dare_game.js'
 dotenv.config()
 
 // Constant variable
-const VERSION = 'v0186.00';
+const VERSION = 'v0297.00';
 const PREFIX = process.env['BOT_PREFIX'];
 const COMMANDS_DATA = new Config ().get ();
 
