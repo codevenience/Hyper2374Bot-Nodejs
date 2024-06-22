@@ -1,0 +1,26 @@
+##
+#  @file
+#  EditorConfig configuration file to maintain consistent coding styles.
+#
+#  @copyright
+#  Copyright (c) 2024, Codevenience Organization. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-3-Clause
+#
+#  @par Specification Reference:
+#  - Refer: https://editorconfig.org/
+#
+##
+
+root = true
+
+[*]
+charset              = utf-8
+indent_size          = 4
+indent_style         = space
+insert_final_newline = true
+end_of_line          = crlf
+
+[*.yml, *.json]
+indent_style = space
+indent_size  = 2
