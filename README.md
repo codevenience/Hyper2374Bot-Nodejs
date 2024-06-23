@@ -12,3 +12,17 @@
     - ```ENV_TWTICH_CHANNELS```: Channel that BOT to join.
     - Multiple channels add the comma to split it.
     - Do not add any redundant space between two channels.
+
+## Dockerize the Application
+
+1. Build the image via Dockerfile ```docker build -t codevenience/hyper2374bot .```
+
+2. Execute the container from built image
+```shell=
+docker run -d -t -i \
+    -e ENV_TWITCH_USERNAME='<twitch_user_name>' \
+    -e ENV_TWITCH_TOKEN='oauth:<oauth_token>' \
+    -e ENV_TWTICH_CHANNELS='<channels_string>' \
+    --name <container_name> \
+    codevenience/hyper2374bot
+```
