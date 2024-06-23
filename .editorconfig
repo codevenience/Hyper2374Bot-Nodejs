@@ -21,6 +21,8 @@ indent_style         = space
 insert_final_newline = true
 end_of_line          = crlf
 
+[*.ts, *.js]
+indent_size  = 2
+
 [*.yml, *.json]
-indent_style = space
 indent_size  = 2
