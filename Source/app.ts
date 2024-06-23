@@ -12,19 +12,22 @@
 **/
 
 import tmi from "tmi.js"
-import { TWITCH_CREDENTIAL } from "./global";
+import { TWITCH_CREDENTIAL, TWITCH_CHANNELS } from "./global";
 import { VERSION_STR } from "./version";
 
 //
 // Configuration of the Twitch BOT for tmi.js.
 //
 export const BOT_OPTIONS = {
+  options: {
+    debug: true,
+    messagesLogLevel: "info"
+  },
   identity: {
     username: TWITCH_CREDENTIAL.getUsername(),
     password: TWITCH_CREDENTIAL.getPassword(),
   },
-  channels: [
-  ]
+  channels: TWITCH_CHANNELS.getChannels(),
 }
 
 //

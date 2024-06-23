@@ -12,7 +12,17 @@
 **/
 
 //
-// Credential information for Twtitch authentication.
+// Split symbol to deliver multiple value via environment variable.
+//
+export const ENV_VAR_SPLIT_SYMBOL: string = ','
+
+//
+// Credential information for Twitch authentication.
 //
 export const ENV_TWITCH_USERNAME: string = 'ENV_TWITCH_USERNAME';
 export const ENV_TWITCH_PASSWORD: string = 'ENV_TWITCH_TOKEN';
+
+//
+// Twitch channels to be joined.
+//
+export const ENV_TWTICH_CHANNELS: string = 'ENV_TWTICH_CHANNELS';

@@ -11,9 +11,15 @@
 
 **/
 
+import { TwitchChannel } from "./config/twitch_channel";
 import { TwitchCredential } from "./config/twitch_credential"
 
 //
 // Twitch credential information.
 //
 export const TWITCH_CREDENTIAL = new TwitchCredential();
+
+//
+// Twitch channels information.
+//
+export const TWITCH_CHANNELS = new TwitchChannel();
