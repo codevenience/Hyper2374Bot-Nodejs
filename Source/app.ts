@@ -12,7 +12,7 @@
 **/
 
 import tmi from "tmi.js"
-import { TWITCH_CREDENTIAL, TWITCH_CHANNELS } from "./global";
+import { CMD_CFG_DATA, TWITCH_CREDENTIAL, TWITCH_CHANNELS } from "./global";
 import { VERSION_STR } from "./version";
 
 //
@@ -66,6 +66,7 @@ function initBotClient() {
  *
  */
 function main() {
+  console.log (CMD_CFG_DATA.data());
   initBotClient();
   CLIENT.connect();
 }

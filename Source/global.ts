@@ -13,6 +13,12 @@
 
 import { TwitchChannel } from "./config/twitch_channel";
 import { TwitchCredential } from "./config/twitch_credential"
+import { CommandConfig } from "./config/command_config";
+
+//
+// Path information.
+//
+export const WORKSPACE_PATH = __dirname;
 
 //
 // Twitch credential information.
@@ -23,3 +29,8 @@ export const TWITCH_CREDENTIAL = new TwitchCredential();
 // Twitch channels information.
 //
 export const TWITCH_CHANNELS = new TwitchChannel();
+
+//
+// Command configuration information.
+//
+export const CMD_CFG_DATA = new CommandConfig (WORKSPACE_PATH);

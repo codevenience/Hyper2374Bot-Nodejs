@@ -13,6 +13,10 @@
     - Multiple channels add the comma to split it.
     - Do not add any redundant space between two channels.
 
+3. (Optional) Set the below environment variable to assign the customerized configuration file.
+    - ```ENV_CMD_CFG_FILE```: Path to configuration file.
+    - If this variable not set, it would use the default configuration file.
+
 ## Dockerize the Application
 
 1. Build the image via Dockerfile ```docker build -t codevenience/hyper2374bot .```

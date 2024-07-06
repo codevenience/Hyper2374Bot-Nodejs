@@ -5,7 +5,7 @@
   "main": "Build/app.js",
   "scripts": {
     "start": "npm run build && node Build/app.js",
-    "build": "tsc -p .",
+    "build": "tsc -p . && cp commands.yml Build/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
