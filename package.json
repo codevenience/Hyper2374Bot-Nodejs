@@ -20,6 +20,7 @@
     "typescript": "^5.5.2"
   },
   "dependencies": {
-    "tmi.js": "^1.8.5"
+    "tmi.js": "^1.8.5",
+    "yaml": "^2.4.5"
   }
 }
