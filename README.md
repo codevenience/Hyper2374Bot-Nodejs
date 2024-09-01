@@ -17,6 +17,10 @@
     - ```ENV_CMD_CFG_FILE```: Path to configuration file.
     - If this variable not set, it would use the default configuration file.
 
+4. (Optional) Set the below environment variable to customize the command prefix.
+    - ```ENV_CMD_PREFIX```:
+    - If this variable not set, it would use the default prefix ```!```.
+
 ## Dockerize the Application
 
 1. Build the image via Dockerfile ```docker build -t codevenience/hyper2374bot .```

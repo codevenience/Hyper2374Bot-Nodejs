@@ -12,7 +12,7 @@
 **/
 
 import tmi from "tmi.js"
-import { CMD_CFG_DATA, TWITCH_CREDENTIAL, TWITCH_CHANNELS } from "./global";
+import { CMD_CFG_DATA, TWITCH_CREDENTIAL, TWITCH_CHANNELS, CMD_PREFIX } from "./global";
 import { VERSION_STR } from "./version";
 
 //
@@ -52,6 +52,32 @@ function onConnectedHandler(addr: string, port: number) {
 }
 
 /**
+ * Handler to process the "message" event.
+ *
+ * @param channel - The channel which the message received from.
+ * @param context - The detailed information of this message.
+ * @param msg     - The message received from the specific channel.
+ * @param self    - Boolean value to check if message is from BOT self.
+ *
+ */
+function onMessageHandler(channel: string, context: object, msg: string, self: boolean) {
+  //
+  // No need to take action on bot self message.
+  //
+  if (self) {
+    return;
+  }
+
+  //
+  // No need to take action when message not started with assigned prefix.
+  //
+  if (!(msg.startsWith(CMD_PREFIX.prefix()))) {
+    console.log ("no need process, not prefix")
+    return;
+  }
+}
+
+/**
  * Initial the Twitch BOT client.
  *
  * This function would help to register the event handler.
@@ -59,6 +85,7 @@ function onConnectedHandler(addr: string, port: number) {
  */
 function initBotClient() {
   CLIENT.on('connected', onConnectedHandler);
+  CLIENT.on('message', onMessageHandler);
 }
 
 /**
@@ -66,7 +93,7 @@ function initBotClient() {
  *
  */
 function main() {
-  console.log (CMD_CFG_DATA.data());
+  console.log(CMD_CFG_DATA.data());
   initBotClient();
   CLIENT.connect();
 }

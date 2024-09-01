@@ -31,3 +31,8 @@ export const ENV_TWTICH_CHANNELS: string = 'ENV_TWTICH_CHANNELS';
 // Environment variable to assign the command configuration file.
 //
 export const ENV_CMD_CFG_FILE: string = 'ENV_CMD_CFG_FILE'
+
+//
+// Environment variable to assign the command prefix.
+//
+export const ENV_CMD_PREFIX: string = 'ENV_CMD_PREFIX'
