@@ -44,13 +44,13 @@ export class TwitchChannel {
    *
    */
   private initChannels(): Array<string> {
-    let Channels: EnvVar = new EnvVar(ENV_TWTICH_CHANNELS);
-    let ChannelsStr: String = Channels.getValue();
+    let channels: EnvVar = new EnvVar(ENV_TWTICH_CHANNELS);
+    let channels_str: String = channels.getValue();
 
-    if(ChannelsStr.includes(ENV_VAR_SPLIT_SYMBOL)) {
-        return Channels.getValue().split(ENV_VAR_SPLIT_SYMBOL);
+    if(channels_str.includes(ENV_VAR_SPLIT_SYMBOL)) {
+        return channels.getValue().split(ENV_VAR_SPLIT_SYMBOL);
     } else {
-        return [`${ChannelsStr}`];
+        return [`${channels_str}`];
     }
   }
 }
