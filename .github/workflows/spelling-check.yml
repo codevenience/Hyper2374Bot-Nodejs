@@ -1,0 +1,52 @@
+##
+#  @file
+#  Configuration file to check the spelling.
+#
+#  @copyright
+#  Copyright (c) 2025, Codevenience Organization. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-3-Clause
+#
+#  @par Specification Reference:
+#
+##
+
+name: Quality - Spelling Check
+
+on:
+  push:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  spelling-check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+
+    runs-on : ${{ matrix.os }}
+
+    steps:
+      - name: Checkout the repository and commit
+        uses: actions/checkout@v3
+        with:
+            submodules: 'recursive'
+            fetch-depth: 0
+            lfs: true
+
+      - name: Checkout LFS objects
+        run: git lfs checkout
+
+      - uses: streetsidesoftware/cspell-action@v6
+        with:
+          files: '**'
+          check_dot_files: explicit
+          root: '.'
+          treat_flagged_words_as_errors: true
+          suggestions: true
+          strict: true
+          incremental_files_only: false
+          config: './.github/cSpell/cspell.config.yml'
+          verbose: true
+          use_cspell_files: false

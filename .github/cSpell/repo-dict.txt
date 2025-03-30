@@ -1,0 +1,16 @@
+##
+#  @file
+#  Dictionary file for repository specific commands and terminologies.
+#
+#  @copyright
+#  Copyright (c) 2025, Codevenience Organization. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-3-Clause
+#
+#  @par Specification Reference:
+#
+##
+
+Codevenience
+
+retval
