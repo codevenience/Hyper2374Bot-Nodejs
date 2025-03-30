@@ -12,7 +12,7 @@
 #
 ##
 
-FROM node:20.14.0-bookworm
+FROM node:22.14.0-bookworm
 
 #
 # Arguments to control the image build.
