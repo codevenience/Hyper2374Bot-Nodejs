@@ -1,0 +1,30 @@
+##
+#  @file
+#  cSpell configuration file.
+#
+#  @copyright
+#  Copyright (c) 2025, Codevenience Organization. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-3-Clause
+#
+#  @par Specification Reference:
+#    - https://cspell.org/docs/Configuration/properties
+#
+##
+
+$schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
+
+version: '0.2'
+
+dictionaryDefinitions:
+  - name: repo-dict
+    path: './repo-dict.txt'
+    addWords: true
+
+dictionaries:
+  - repo-dict
+
+ignorePaths:
+  - '**/node_modules/**'
+  # Ignore cSpell dictionary files and configuration files.
+  - '**/.github/cSpell/**'
