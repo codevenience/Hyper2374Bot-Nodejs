@@ -18,7 +18,7 @@ FROM node:22.14.0-bookworm
 # Arguments to control the image build.
 #
 ARG GIT_REPOSITORY=https://github.com/codevenience/Hyper2374Bot-Nodejs
-ARG GIT_BRANCH_NAME=dev/Refactor2024
+ARG GIT_BRANCH_NAME=main
 
 #
 # Update the installed package and install git.
