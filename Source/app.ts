@@ -38,8 +38,8 @@ const CLIENT = new tmi.client(BOT_OPTIONS);
 /**
  * Handler to process the "connected" event.
  *
- * @param addr - The address connted to Twitch IRC server.
- * @param port - The port number conntected to Twitch IRC server.
+ * @param addr - The address connected to Twitch IRC server.
+ * @param port - The port number connected to Twitch IRC server.
  *
  */
 function onConnectedHandler(addr: string, port: number) {

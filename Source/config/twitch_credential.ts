@@ -55,7 +55,7 @@ export class TwitchCredential {
   /**
    * Initial the variable of this class.
    *
-   * @param key      - Correpond environment variable.
+   * @param key      - Correspond environment variable.
    * @param variable - Caller provided variable value.
    *
    * @returns Initialized variable value.

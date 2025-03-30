@@ -1,6 +1,6 @@
 /**
   @file
-  Global varialbes of this application.
+  Global variables of this application.
 
   @copyright
   Copyright (c) 2024, Codevenience Organization. All rights reserved.<BR>

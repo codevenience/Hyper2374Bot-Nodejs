@@ -25,7 +25,7 @@ export const ENV_TWITCH_PASSWORD: string = 'ENV_TWITCH_TOKEN';
 //
 // Twitch channels to be joined.
 //
-export const ENV_TWTICH_CHANNELS: string = 'ENV_TWTICH_CHANNELS';
+export const ENV_TWITCH_CHANNELS: string = 'ENV_TWITCH_CHANNELS';
 
 //
 // Environment variable to assign the command configuration file.

@@ -11,7 +11,7 @@
 
 **/
 
-import { ENV_TWTICH_CHANNELS, ENV_VAR_SPLIT_SYMBOL } from '../const/env_var_string'
+import { ENV_TWITCH_CHANNELS, ENV_VAR_SPLIT_SYMBOL } from '../const/env_var_string'
 import { EnvVar } from '../core/env_var';
 
 export class TwitchChannel {
@@ -44,7 +44,7 @@ export class TwitchChannel {
    *
    */
   private initChannels(): Array<string> {
-    let channels: EnvVar = new EnvVar(ENV_TWTICH_CHANNELS);
+    let channels: EnvVar = new EnvVar(ENV_TWITCH_CHANNELS);
     let channels_str: String = channels.getValue();
 
     if(channels_str.includes(ENV_VAR_SPLIT_SYMBOL)) {
